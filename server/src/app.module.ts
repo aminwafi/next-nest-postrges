@@ -17,7 +17,7 @@ configDotenv();
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: '',
-      entities: [__dirname, '/**/*.entity{.ts,.js}'],
+      entities: ["dist/**/*.entity.js"],
       synchronize: true
     }),
     UsersModule,
