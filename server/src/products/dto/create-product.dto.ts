@@ -8,7 +8,7 @@ export class CreateProductDto {
     readonly location: string;
 
     @IsInt()
-    readonly price: string;
+    readonly price: number;
 
     @IsOptional()
     @IsString()
