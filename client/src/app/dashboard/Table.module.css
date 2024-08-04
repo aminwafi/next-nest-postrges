@@ -7,15 +7,18 @@
 .th, .td {
     border: 1px solid #ddd;
     padding: 8px;
-    text-align: left;
+    text-align: center;
 }
   
 .th {
     background-color: #181414;
     border-bottom: 2px solid #ddd;
+    text-align: center;
 }
   
 .img {
+    display: block;
+    margin: 0 auto;
     width: 50px;
     height: 50px;
 }
