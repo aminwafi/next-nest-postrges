@@ -1,0 +1,37 @@
+.table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+  
+.th, .td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+  
+.th {
+    background-color: #181414;
+    border-bottom: 2px solid #ddd;
+    text-align: center;
+}
+  
+.img {
+    display: block;
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+}
+
+.iconButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #0070f3;
+    margin: 0 10px;
+}
+  
+.iconButton:hover {
+    color: #005bb5;
+}
