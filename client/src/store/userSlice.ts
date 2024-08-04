@@ -16,9 +16,22 @@ const initialState: UserState = {
 };
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
-  const response = await fetch('https://reqres.in/api/users');
-  const result = await response.json();
-  return result.data as User[];
+  let users: User[] = [];
+
+  var response = await fetch('https://reqres.in/api/users');
+  var result = await response.json();
+  users = users.concat(result.data);
+
+  while (result.page < result.total_pages) {
+    response = await fetch(`https://reqres.in/api/users?page=${result.page + 1}`);
+    result = await response.json();
+
+    users = users.concat(result.data);
+
+    result.page = result.page + 1;
+  }
+
+  return users;
 });
 
 const userSlice = createSlice({
