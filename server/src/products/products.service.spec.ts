@@ -23,7 +23,7 @@ describe('ProductsService', () => {
     repository = module.get<Repository<Product>>(getRepositoryToken(Product))
   });
 
-  // it('should be defined', () => {
-  //   expect(service).toBeDefined();
-  // });
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
 });
