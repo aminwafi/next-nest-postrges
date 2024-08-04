@@ -2,29 +2,30 @@
 
 import React from 'react';
 import { UserTable } from '../../interface/User';
+import styles from './Table.module.css';
 
 
 const Table: React.FC<UserTable> = ({ data }) => {
   return (
-    <table>
+    <table className={styles.table}>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Email</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Avatar</th>
+          <th className={styles.th}>ID</th>
+          <th className={styles.th}>Email</th>
+          <th className={styles.th}>First Name</th>
+          <th className={styles.th}>Last Name</th>
+          <th className={styles.th}>Avatar</th>
         </tr>
       </thead>
       <tbody>
         {data.map(user => (
           <tr key={user.id}>
-            <td>{user.id}</td>
-            <td>{user.email}</td>
-            <td>{user.first_name}</td>
-            <td>{user.last_name}</td>
-            <td>
-              <img src={user.avatar} alt={user.first_name} width={50} height={50} />
+            <td className={styles.td}>{user.id}</td>
+            <td className={styles.td}>{user.email}</td>
+            <td className={styles.td}>{user.first_name}</td>
+            <td className={styles.td}>{user.last_name}</td>
+            <td className={styles.td}>
+              <img className={styles.img} src={user.avatar} alt={user.first_name} width={50} height={50} />
             </td>
           </tr>
         ))}
