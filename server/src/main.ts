@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { configDotenv } from 'dotenv';
+import { generateToken } from 'token-generator';
 
 configDotenv();
 
@@ -22,7 +23,7 @@ async function bootstrap() {
     .addTag('Pricing Query API Tag')
     .build();
 
-  console.log(config);
+  generateToken();
   
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api-docs', app, document);
