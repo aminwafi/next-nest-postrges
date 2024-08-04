@@ -37,19 +37,5 @@ export class ProductsController {
   removeByProductCode(@Query('productCode') productCode: string) {
     return this.productsService.removeByProductCode(productCode);
   }
-
-  // @Get()
-  // findAll() {
-  //   return this.productsService.findAll();
-  // }
-
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
-  //   return this.productsService.update(+id, updateProductDto);
-  // }
-
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.productsService.remove(+id);
-  // }
+  
 }
