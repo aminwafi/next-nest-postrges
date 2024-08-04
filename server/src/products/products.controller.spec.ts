@@ -1,14 +1,17 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { Reflector } from '@nestjs/core';
 import { ProductsController } from './products.controller';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
+import { RolesGuard } from '../auth/roles.guard';
 
 describe('ProductsController', () => {
   let controller: ProductsController;
   let service: ProductsService;
 
   beforeEach(async () => {
+    const mockRolesGuard = { canActivate: jest.fn(() => true) };
     const module: TestingModule = await Test.createTestingModule({
       controllers: [ProductsController],
       providers: [
@@ -20,6 +23,16 @@ describe('ProductsController', () => {
             updateByProductCode: jest.fn().mockResolvedValue({}),
             removeByProductCode: jest.fn().mockResolvedValue(undefined)
           }
+        },
+        {
+          provide: Reflector,
+          useValue: {
+            get: jest.fn().mockReturnValue(['admin', 'user'])
+          }
+        },
+        {
+          provide: RolesGuard,
+          useValue: mockRolesGuard
         }
       ],
     }).compile();
@@ -60,11 +73,12 @@ describe('ProductsController', () => {
     });
   });
 
-  // describe('removeByProductCode', () => {
-  //   it('should delete product with matching productCode', async () => {
-  //     jest.spyOn(service, 'removeByProductCode').mockResolvedValue({ affected: 1 });
+  describe('removeByProductCode', () => {
+    it('should delete product with matching productCode', async () => {
+      jest.spyOn(service, 'removeByProductCode').mockResolvedValue(undefined);
 
-  //     expect(await controller.removeByProductCode('T000-create')).toBe(result);
-  //   });
-  // });
+      await expect(controller.removeByProductCode('T000-create')).resolves.toBeUndefined();
+      expect(service.removeByProductCode).toHaveBeenCalledWith('T000-create');
+    });
+  });
 });
