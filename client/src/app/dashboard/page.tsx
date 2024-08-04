@@ -1,7 +1,6 @@
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '../api/auth/[...nextauth]/route';
 
-import Layout from '../components/Layout';
 import ClientComponent from './ClientComponent';
 import { redirect } from 'next/navigation';
 

@@ -9,7 +9,7 @@ export const authOptions = {
     }),
   ],
   pages: {
-    signIn: '/error',
+    signIn: '/',
   },
   callbacks: {
     async redirect({ url , baseUrl } : { url: any, baseUrl: any }) {
