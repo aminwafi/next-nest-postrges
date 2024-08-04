@@ -11,7 +11,7 @@ configDotenv();
   imports: [
     PassportModule,
     JwtModule.register({
-      secret: process.env.JWT_SECRET,
+      secret: process.env.NESTAUTH_SECRET,
       signOptions: { expiresIn: '1h' }
     }),
   ],
