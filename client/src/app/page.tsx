@@ -1,12 +1,11 @@
-"use client";
-import AuthUpdater from "./auth-updater";
-import AuthViewer from './auth-viewer';
+import SignInButton from './components/SignInButton';
 
-export default function Home() {
+const HomePage = () => {
   return (
-    <main className="w-full h-screen grid md:grid-cols-2 place-items-center">
-      <AuthUpdater />
-      <AuthViewer />
-    </main>
+    <div>
+      <SignInButton />
+    </div>
   );
-}
+};
+
+export default HomePage;
