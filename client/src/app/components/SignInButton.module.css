@@ -1,0 +1,27 @@
+.signInButton {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    color: #ffffff;
+    background-color: #4285f4;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+  
+.signInButton:hover {
+    background-color: #357ae8;
+}
+  
+.icon {
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+  
+.buttonText {
+    font-weight: bold;
+    flex-shrink: 0;
+    padding: 0 20px;
+}
