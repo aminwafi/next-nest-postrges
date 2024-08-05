@@ -7,7 +7,15 @@ GOOGLE_CLIENT_ID=485643269714-4mcp6qfbcoh.apps.googleusercontent.com
 GOOGLE_CLIENT_SECRET=GOCSPX-e2rqbr
 ```
 
+### Running the app
 
+```bash
+$ cd client
+
+$ npm run dev
+```
+
+The frontend application will be running [http://localhost:3000](http://localhost:3000) by default.
 
 ## Backend
 
@@ -24,13 +32,13 @@ DB_NAME=MOTOR_INSURANCE_WEBSITE
 ### Running the app
 ```bash
 # development
-npm run start
+$ npm run start
 
 # docker
 $ docker-compose up -d --build
 ```
 
-This application is running on [http://localhost:3002](http://localhost:3002) by default.
+The backend application is running on [http://localhost:3002](http://localhost:3002) by default.
 Once its started, an admin and user token will be generated in console
 
 This token will be used as RBAC routes
