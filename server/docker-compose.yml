@@ -14,7 +14,7 @@ services:
       - DB_PASSWORD=db1234
       - DB_NAME=MOTOR_INSURANCE_WEBSITE
     depends_on:
-      - postgres_db
+      - postgres
     volumes:
       - .:/usr/src/app
     networks:
