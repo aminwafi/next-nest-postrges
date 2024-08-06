@@ -9,8 +9,27 @@ services:
       - "3002:3002"
     environment:
       - NODE_ENV=production
+      - DB_HOSTNAME=postgres
+      - DB_USERNAME=admin
+      - DB_PASSWORD=db1234
+      - DB_NAME=MOTOR_INSURANCE_WEBSITE
+    depends_on:
+      - postgres_db
     volumes:
       - .:/usr/src/app
+    networks:
+      - shared-network
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=db1234
+      - POSTGRES_DB=MOTOR_INSURANCE_WEBSITE
+    volumes:
+      - ~/apps/postgres:/var/lib/postgresql/data
     networks:
       - shared-network
 
