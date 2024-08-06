@@ -12,6 +12,7 @@ GOOGLE_CLIENT_SECRET=GOCSPX-e2rqbr
 ```bash
 $ cd client
 
+# development
 $ npm run dev
 ```
 
@@ -31,6 +32,8 @@ DB_NAME=MOTOR_INSURANCE_WEBSITE
 
 ### Running the app
 ```bash
+$ cd server
+
 # development
 $ npm run start
 
@@ -42,3 +45,11 @@ The backend application is running on [http://localhost:3002](http://localhost:3
 Once its started, an admin and user token will be generated in console
 
 This token will be used as RBAC routes
+
+### Testing with code coverage
+
+```bash
+npm run test:cov
+```
+
+Currently, the test coverage is at 89%
