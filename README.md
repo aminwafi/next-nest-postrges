@@ -53,6 +53,11 @@ $ docker-compose up -d --build
 # docker build and run (without postgres container)
 $ docker build -t backend-service .
 $ docker run -d -e NESTAUTH_SECRET=your_secret -e DB_HOSTNAME=db_hostname -e DB_USERNAME=db_username -e DB_PASSWORD=db_password -e DB_NAME=db_name backend-service
+
+# if already running postgres in different container
+$ docker network create --driver bridge pgnetwork
+$ docker network connect pgnetwork <ENTER-YOUR-POSTGRES-CONTAINER-ID>
+$ docker network connect pgnetwork backend-service
 ```
 
 The docker compose file will run two containers (backend service and postgres db).

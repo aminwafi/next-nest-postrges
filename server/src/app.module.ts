@@ -5,6 +5,8 @@ import { AppService } from './app.service';
 import { configDotenv } from 'dotenv';
 import { ProductsModule } from './products/products.module';
 import { AuthModule } from './auth/auth.module';
+import { APP_GUARD } from '@nestjs/core';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 
 configDotenv();
 
@@ -22,8 +24,20 @@ configDotenv();
     }),
     ProductsModule,
     AuthModule,
+
+    ThrottlerModule.forRoot([{
+      // NOTE: Set default to 100 request per 60 sec
+      ttl: parseInt(process.env.THROTTLE_TTL) ?? 60000,
+      limit: parseInt(process.env.THROTTLE_LIMIT) ?? 100
+    }]),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard
+    },
+    AppService
+  ],
 })
 export class AppModule {}
