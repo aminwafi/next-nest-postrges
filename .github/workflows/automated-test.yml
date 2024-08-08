@@ -42,16 +42,13 @@ jobs:
       - name: Run unit test
         run: |
           cd server
-
-          TOKEN_SECRET=$(openssl rand -base64 32 | tr -d '\n')
-          echo "NESTAUTH_SECRET=$TOKEN_SECRET" >> $GITHUB_ENV
-
           npm run test:cov
         env:
           DB_HOSTNAME: postgres
           DB_USERNAME: postgres
           DB_PASSWORD: postgres
           DB_NAME: MOTOR_INSURANCE_WEBSITE
+          NESTAUTH_SECRET: fbAcrDKkhkCANwTFS75gSa7MrNmMebu7jykcN5ON3E4=
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
@@ -61,16 +58,13 @@ jobs:
       - name: Start backend
         run: |
           cd server
-
-          TOKEN_SECRET=$(openssl rand -base64 32 | tr -d '\n')
-          echo "NESTAUTH_SECRET=$TOKEN_SECRET" >> $GITHUB_ENV
-
           npm run start &
         env:
           DB_HOSTNAME: postgres
           DB_USERNAME: postgres
           DB_PASSWORD: postgres
           DB_NAME: MOTOR_INSURANCE_WEBSITE
+          NESTAUTH_SECRET: fbAcrDKkhkCANwTFS75gSa7MrNmMebu7jykcN5ON3E4=
 
       - name: Run load test
         run: |
