@@ -1,0 +1,67 @@
+name: Automated unit and load test
+
+on:
+  workflow_dispatch:
+    
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: MOTOR_INSURANCE_WEBSITE
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'v18.19.0'
+
+      - name: Install and build
+        run: |
+          cd server
+          npm i
+          npm run build
+
+      - name: Run unit test
+        run: |
+          npm run test:cov
+        env:
+          DB_HOSTNAME: postgres
+          DB_USERNAME: postgres
+          DB_PASSWORD: postgres
+          DB_NAME: MOTOR_INSURANCE_WEBSITE
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Start backend
+        run: |
+          npm run start &
+        env:
+          DB_HOSTNAME: postgres
+          DB_USERNAME: postgres
+          DB_PASSWORD: postgres
+          DB_NAME: MOTOR_INSURANCE_WEBSITE
+
+      - name: Run load test
+        run: npm run load-test
+
+      - name: Stop backend
+        run: kill $(jobs -p)
+

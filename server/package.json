@@ -17,7 +17,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage --detectOpenHandles",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "load-test": "artillery run test/load-test.yml"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -54,6 +55,7 @@
     "@types/supertest": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
+    "artillery": "^2.0.19",
     "dotenv": "^16.4.5",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^9.0.0",
