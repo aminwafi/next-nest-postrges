@@ -43,6 +43,8 @@ jobs:
         run: |
           cd server
           npm run test:cov
+
+          cp coverage ../
         env:
           DB_HOSTNAME: localhost
           DB_USERNAME: postgres
