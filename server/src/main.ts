@@ -19,6 +19,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Pricing Query')
     .setDescription('Pricing Query API description')
+    .addBearerAuth()
     .setVersion('1.0')
     .addTag('Pricing Query API Tag')
     .build();
