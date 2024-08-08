@@ -44,7 +44,7 @@ jobs:
           cd server
           npm run test:cov
         env:
-          DB_HOSTNAME: postgres
+          DB_HOSTNAME: localhost
           DB_USERNAME: postgres
           DB_PASSWORD: postgres
           DB_NAME: MOTOR_INSURANCE_WEBSITE
@@ -60,7 +60,7 @@ jobs:
           cd server
           npm run start &
         env:
-          DB_HOSTNAME: postgres
+          DB_HOSTNAME: localhost
           DB_USERNAME: postgres
           DB_PASSWORD: postgres
           DB_NAME: MOTOR_INSURANCE_WEBSITE
