@@ -42,6 +42,10 @@ jobs:
       - name: Run unit test
         run: |
           cd server
+
+          TOKEN_SECRET=$(openssl rand -base64 32 | tr -d '\n')
+          echo "NESTAUTH_SECRET=$TOKEN_SECRET" >> $GITHUB_ENV
+
           npm run test:cov
         env:
           DB_HOSTNAME: postgres
@@ -57,6 +61,10 @@ jobs:
       - name: Start backend
         run: |
           cd server
+
+          TOKEN_SECRET=$(openssl rand -base64 32 | tr -d '\n')
+          echo "NESTAUTH_SECRET=$TOKEN_SECRET" >> $GITHUB_ENV
+
           npm run start &
         env:
           DB_HOSTNAME: postgres
